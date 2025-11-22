@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
-import { useAuth } from "./AuthContext";
+import { useAuth } from "../auth/AuthContext";
 
-/** A form that allows users to log into an existing account. */
-export default function Login() {
-  const { login } = useAuth();
+/** A form that allows users to register for a new account */
+export default function Register() {
+  const { register } = useAuth();
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
 
-  const onLogin = async (formData) => {
+  const onRegister = async (formData) => {
     const username = formData.get("username");
     const password = formData.get("password");
     try {
-      await login({ username, password });
+      await register({ username, password });
       navigate("/");
     } catch (e) {
       setError(e.message);
@@ -23,20 +23,20 @@ export default function Login() {
 
   return (
     <>
-      <h1>Log in to your account</h1>
-      <form action={onLogin}>
+      <h1>Register for an account</h1>
+      <form action={onRegister}>
         <label>
           Username
-          <input type="username" name="username" required />
+          <input type="text" name="username" />
         </label>
         <label>
           Password
           <input type="password" name="password" required />
         </label>
-        <button>Login</button>
+        <button>Register</button>
         {error && <output>{error}</output>}
       </form>
-      <Link to="/register">Need an account? Register here.</Link>
+      <Link to="/login">Already have an account? Log in here.</Link>
     </>
   );
 }

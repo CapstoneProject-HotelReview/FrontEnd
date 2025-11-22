@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
-import Layout from "./layout/Layout";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
+import Layout from "./components/Layout";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 export default function App() {
   return (

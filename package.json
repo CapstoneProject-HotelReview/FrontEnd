@@ -1,5 +1,5 @@
 {
-  "name": "foobar",
+  "name": "hotelreview",
   "type": "module",
   "scripts": {
     "dev": "vite",
