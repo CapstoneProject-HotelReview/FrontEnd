@@ -1,14 +1,30 @@
 import { useState, useEffect } from "react";
 
 export default function review() {
+<<<<<<< Updated upstream
+  const tryAddReview = async () => {
+    setError(null);
+    try {
+=======
   const [subject, setSubject] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
+  const [reviews, setReviews] = useState([]);
 
   const tryAddReview = async () => {
     setError(null);
     try {
+      const newReview = {
+        subject: subject,
+        text: text,
+      };
+      setReviews([...reviews, newReview]);
+
+      setSubject("");
+      setText("");
+
       alert("Your review was successfully submitted!");
+>>>>>>> Stashed changes
     } catch (error) {
       setError(error.message);
     }
