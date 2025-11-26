@@ -1,11 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function review() {
-<<<<<<< Updated upstream
-  const tryAddReview = async () => {
-    setError(null);
-    try {
-=======
   const [subject, setSubject] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
@@ -24,7 +19,6 @@ export default function review() {
       setText("");
 
       alert("Your review was successfully submitted!");
->>>>>>> Stashed changes
     } catch (error) {
       setError(error.message);
     }
@@ -45,11 +39,21 @@ export default function review() {
         id="subject"
         placeholder="Tell us what your review is about!"
         className="subject_line"
+        value={subject}
+        onChange={(e) => setSubject(e.target.value)}
       />
-      <input type="text" id="text-box" className="review-textbox" />
-      <button id="submit" className="submit-btn">
+      <input
+        type="text"
+        id="text-box"
+        className="review-textbox"
+        placeholder="Write your review here."
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <button id="submit" className="submit-btn" onClick={tryAddReview}>
         submit
       </button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }
