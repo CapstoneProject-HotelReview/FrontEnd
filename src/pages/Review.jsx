@@ -24,36 +24,45 @@ export default function review() {
     }
   };
   return (
-    <div>
-      <h3>Reviews</h3>
-      {reviews.length === 0 && <p>No reviews yet.</p>}
-      {reviews.map((r, index) => (
-        <div key={index} className="public-reviews">
-          <h4>{r.subject}</h4>
-          <p>{r.text}</p>
+    <div className="reviews-card">
+      <div className="public-reviews">
+        <div className="reviews-title">
+          <h3>Reviews</h3>
         </div>
-      ))}
-      <h3>Make a Review</h3>
-      <input
-        type="text"
-        id="subject"
-        placeholder="Tell us what your review is about!"
-        className="subject_line"
-        value={subject}
-        onChange={(e) => setSubject(e.target.value)}
-      />
-      <input
-        type="text"
-        id="text-box"
-        className="review-textbox"
-        placeholder="Write your review here."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button id="submit" className="submit-btn" onClick={tryAddReview}>
-        submit
-      </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+
+        {reviews.length === 0 && <p>No reviews yet.</p>}
+        {reviews.map((r, index) => (
+          <div key={index}>
+            <h4>{r.subject}</h4>
+            <p>{r.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="makeareview">
+        <input
+          type="text"
+          id="subject"
+          placeholder="Title your review"
+          className="subject_line"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+        />
+        <input
+          type="text"
+          id="text-box"
+          className="review-textbox"
+          placeholder="Write your review here."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+
+        <button id="submit" className="submit-btn" onClick={tryAddReview}>
+          submit
+        </button>
+
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
     </div>
   );
 }
