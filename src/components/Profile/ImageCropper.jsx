@@ -1,10 +1,13 @@
-import { useState } from "react";
-import ReactCrop, { centerCrop, makeAspectCrop } from "react-image-crop";
+import { useRef, useState } from "react";
+import ReactCrop, { centerCrop, convertToPixelCrop, makeAspectCrop } from "react-image-crop";
+import setCanvasPreview from "../../setCanvasPreview";
 
 const ASPECT_RATIO = 1;
 const MIN_DIMENSION = 150;
 
-export default function ImageCropper({ onFileSelect }) {
+export default function ImageCropper({ onFileSelect, updateUserPic, closeModal }) {
+  const imgReference = useRef(null);
+  const previewCanvasReference = useRef(null);
   const [fileName, setFileName] = useState("");
   const [imgSrc, setImgSrc] = useState("");
   const [crop, setCrop] = useState();
@@ -79,19 +82,33 @@ export default function ImageCropper({ onFileSelect }) {
               aspect={ASPECT_RATIO}
               minWidth={MIN_DIMENSION}
             >
-              <img src={imgSrc} alt="Upload" className="img-to-crop" onLoad={onImageLoad} />
+              <img
+                ref={imgReference}
+                src={imgSrc}
+                alt="Upload"
+                className="img-to-crop"
+                onLoad={onImageLoad}
+              />
             </ReactCrop>
           </div>
           <button
             className="crop-btn"
             onClick={() => {
-              setCanvasPreview();
+              setCanvasPreview(
+                imgReference.current,
+                previewCanvasReference.current,
+                convertToPixelCrop(crop, imgReference.current.width, imgReference.current.height)
+              );
+              const dataUrl = previewCanvasReference.current.toDataURL();
+              updateUserPic(dataUrl);
+              closeModal();
             }}
           >
             Crop Image
           </button>
         </>
       )}
+      {crop && <canvas ref={previewCanvasReference} className="canvasPreview" />}
     </>
   );
 }

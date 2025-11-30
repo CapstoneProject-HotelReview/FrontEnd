@@ -1,6 +1,6 @@
 import ImageCropper from "./ImageCropper";
 
-export default function Modal({ closeModal }) {
+export default function Modal({ updateUserPic, closeModal }) {
   return (
     <div className="modal-overlay" onClick={closeModal}>
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
@@ -13,7 +13,7 @@ export default function Modal({ closeModal }) {
         >
           &times;
         </button>
-        <ImageCropper />
+        <ImageCropper updateUserPic={updateUserPic} closeModal={closeModal} />
       </div>
     </div>
   );
