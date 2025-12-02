@@ -41,12 +41,11 @@ export default function review() {
 
       <div className="makeareview">
         <div className="rate-btn">
-          <h3>Rate this hotel.</h3>
-          <span data-value="5">🌎</span>
-          <span data-value="4">🌎</span>
-          <span data-value="3">🌎</span>
-          <span data-value="2">🌎</span>
           <span data-value="1">🌎</span>
+          <span data-value="2">🌎</span>
+          <span data-value="3">🌎</span>
+          <span data-value="4">🌎</span>
+          <span data-value="5">🌎</span>
         </div>
         <input
           type="text"

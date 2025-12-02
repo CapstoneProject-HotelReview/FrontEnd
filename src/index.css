@@ -34,6 +34,26 @@
   gap: 10px;
 }
 
+.rate-btn {
+  height: auto;
+  background-color: red;
+}
+
+.rate-btn span {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.rate-btn span.selected {
+  border: 1px solid black;
+}
+
+.rate-btn span.selected,
+.rate-btn span:hover,
+.rate-btn span:hover ~ span {
+  font-size: 35px;
+}
+
 .subject_line {
   width: 75%;
   border-radius: 10px;
