@@ -40,8 +40,10 @@
 }
 
 .rate-btn span {
-  font-size: 30px;
+  font-size: 35px;
   cursor: pointer;
+  padding: "6px";
+  border-radius: 50%;
 }
 
 .rate-btn span.selected {
