@@ -5,6 +5,11 @@ export default function review() {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [reviews, setReviews] = useState([]);
+  const [rating, setRating] = useState(0);
+
+  const handleRating = (value) => {
+    setRating(value);
+  };
 
   const tryAddReview = async () => {
     setError(null);
@@ -12,17 +17,20 @@ export default function review() {
       const newReview = {
         subject: subject,
         text: text,
+        rating: rating,
       };
       setReviews([...reviews, newReview]);
 
       setSubject("");
       setText("");
+      setRating(0);
 
       alert("Your review was successfully submitted!");
     } catch (error) {
       setError(error.message);
     }
   };
+
   return (
     <div className="reviews-card">
       <div className="public-reviews">
@@ -35,17 +43,23 @@ export default function review() {
           <div key={index}>
             <h4>{r.subject}</h4>
             <p>{r.text}</p>
+            <p>Rating:{r.rating}/5</p>
           </div>
         ))}
       </div>
 
       <div className="makeareview">
         <div className="rate-btn">
-          <span data-value="1">🌎</span>
-          <span data-value="2">🌎</span>
-          <span data-value="3">🌎</span>
-          <span data-value="4">🌎</span>
-          <span data-value="5">🌎</span>
+          <h3>Rate this hotel.</h3>
+          {[1, 2, 3, 4, 5].map((value) => (
+            <span
+              key={value}
+              data-value={value}
+              onClick={() => handleRating(value)}
+            >
+              🌎
+            </span>
+          ))}
         </div>
         <input
           type="text"
