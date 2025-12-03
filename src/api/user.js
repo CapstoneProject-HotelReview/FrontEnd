@@ -2,7 +2,7 @@ const API = import.meta.env.VITE_API;
 
 export async function getUserInfo(token) {
   try {
-    const response = await fetch(`${API}/user/me`, {
+    const response = await fetch(`${API}/users/me`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,

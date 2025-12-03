@@ -1,5 +1,5 @@
 {
-  "name": "hotelreview",
+  "name": "globestay",
   "type": "module",
   "scripts": {
     "dev": "vite",
