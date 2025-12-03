@@ -53,9 +53,6 @@ export default function review() {
           <h3>Rate this hotel.</h3>
           {[1, 2, 3, 4, 5].map((value) => (
             <span
-              style={{
-                backgroundColor: rating === value ? "black" : "transparent",
-              }}
               key={value}
               data-value={value}
               onClick={() => handleRating(value)}
