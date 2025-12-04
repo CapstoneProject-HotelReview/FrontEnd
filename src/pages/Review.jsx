@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuth } from "../auth/AuthContext";
 
 export default function review() {
   const [subject, setSubject] = useState("");
@@ -7,7 +8,14 @@ export default function review() {
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState(0);
 
+  // const { token } = useAuth();
+  // const isLoggedIn = Boolean(token);
+
   const handleRating = (value) => {
+    // if (!isLoggedIn) {
+    //   alert("You must be logged in to review this hotel");
+    //   return;
+    // }
     setRating(value);
   };
 

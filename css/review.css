@@ -56,7 +56,7 @@
   border-radius: 50%;
 }
 
-.rate-btn span::marker {
+.rate-btn span:a {
   background-color: black;
 }
 
