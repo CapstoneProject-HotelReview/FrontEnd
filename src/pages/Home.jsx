@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { link } from "react-router-dom";
+import { Link } from "react-router";
 
-export default function home() {
+
+export default function Home() {
   const [hotels, setHotels] = useState([]);
   useEffect(() => {
     async function fetchHotels() {
@@ -15,7 +16,7 @@ export default function home() {
     <div className="hotels-card">
       {hotels.map((hotel) => (
         <link key={hotel.id} to={`/hotels/${hotel.id}`} className="hotel">
-          <h3>{}</h3>
+          <h3>{hotel.name}</h3>
         </link>
       ))}
     </div>
