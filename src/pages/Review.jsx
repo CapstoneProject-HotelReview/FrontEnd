@@ -20,6 +20,10 @@ export default function review() {
   };
 
   const tryAddReview = async () => {
+    // if (!isLoggedIn) {
+    //   alert("You must be logged in to review this hotel");
+    //   return;
+    // }
     setError(null);
     try {
       const newReview = {
@@ -51,14 +55,14 @@ export default function review() {
           <div key={index}>
             <h4>{r.subject}</h4>
             <p>{r.text}</p>
-            <p>Rating:{r.rating}/5</p>
+            <p>Rating:{r.rating}/5🌎</p>
           </div>
         ))}
       </div>
 
       <div className="makeareview">
         <div className="rate-btn">
-          <h3>Rate this hotel.</h3>
+          <h4>Rate this hotel.</h4>
           {[1, 2, 3, 4, 5].map((value) => (
             <span
               key={value}
