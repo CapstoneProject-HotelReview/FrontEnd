@@ -1,5 +1,5 @@
 {
-  "name": "hotelreview",
+  "name": "globestay",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-image-crop": "^11.0.10",
     "react-router": "^7.6.0"
   },
   "devDependencies": {
