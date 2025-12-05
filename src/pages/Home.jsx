@@ -11,5 +11,13 @@ export default function home() {
     }
     fetchHotels();
   }, []);
-  return <div className="hotels-card"></div>;
+  return (
+    <div className="hotels-card">
+      {hotels.map((hotel) => (
+        <link key={hotel.id} to={`/hotels/${hotel.id}`} className="hotel">
+          <h3>{}</h3>
+        </link>
+      ))}
+    </div>
+  );
 }
