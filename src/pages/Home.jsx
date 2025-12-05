@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 
 export default function Home() {
@@ -15,9 +15,9 @@ export default function Home() {
   return (
     <div className="hotels-card">
       {hotels.map((hotel) => (
-        <link key={hotel.id} to={`/hotels/${hotel.id}`} className="hotel">
-          <h3>{hotel.name}</h3>
-        </link>
+        <Link key={hotel.id} to={`/hotels/${hotel.id}`} className="hotel">
+          <h3>{}</h3>
+        </Link>
       ))}
     </div>
   );
