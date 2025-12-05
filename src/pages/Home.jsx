@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-export default function Home() {
-  return (
-    <main>
-      <h1>Home Page</h1>
-      <p>Placeholder home page for the navbar/router feature.</p>
-    </main>
-  );
-}
-=======
 import { useState, useEffect } from "react";
 import { link } from "react-router-dom";
 
@@ -31,4 +21,3 @@ export default function home() {
     </div>
   );
 }
->>>>>>> 290075004293476b6c6881ab6279710ebac74e56
