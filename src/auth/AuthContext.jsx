@@ -31,6 +31,7 @@ export function AuthProvider({ children }) {
     const result = await response.text();
     if (!response.ok) throw Error(result);
     setToken(result);
+    console.log("Result: ", result);
   };
 
   const logout = () => {

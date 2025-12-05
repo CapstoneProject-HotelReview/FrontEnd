@@ -1,0 +1,90 @@
+.reviews-card {
+  width: 100%;
+  box-sizing: border-box;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 2ch;
+}
+
+.reviews-title {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border: none;
+  border-bottom: solid black 1px;
+  width: 97%;
+  padding: 1ch;
+}
+
+.public-reviews {
+  border: none;
+  width: 95%;
+  border-bottom: solid black 1px;
+  padding: 2ch;
+}
+
+.makeareview {
+  margin-top: 3ch;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 3ch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.rate-btn {
+  height: auto;
+  display: block;
+  align-self: center;
+  width: 50ch;
+  margin: 3ch;
+  padding: 1ch;
+}
+
+.rate-btn span {
+  font-size: 35px;
+  cursor: pointer;
+  padding: 10px;
+
+  border-radius: 50%;
+}
+
+.rate-btn span:a {
+  background-color: black;
+}
+
+.rate-btn span.selected,
+.rate-btn span:hover,
+.rate-btn span:hover ~ span {
+  font-size: 35px;
+}
+
+.subject_line {
+  width: 75%;
+  border-radius: 10px;
+  padding: 0.25rem;
+  border-color: rgb(65, 148, 232);
+}
+
+.review-textbox {
+  border-radius: 10px;
+  border-color: rgb(65, 148, 232);
+  margin-top: 3ch;
+  display: block;
+  width: 75%;
+  height: 10ch;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  margin-top: 3ch;
+  border: none;
+  background-color: rgb(65, 148, 232);
+  padding: 0.25rem;
+  width: 75%;
+  border-radius: 10px;
+  font-size: 16px;
+}
