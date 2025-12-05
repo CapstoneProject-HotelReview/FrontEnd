@@ -1,3 +1,12 @@
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+h3 {
+  color: blue;
+}
+
 .userPic {
   width: 200px;
   height: 200px;
@@ -25,14 +34,14 @@
   padding: 1rem;
   height: 80vh;
   width: 70vw;
-  max-height: 95vh;        
+  max-height: 95vh;
   margin: auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,.2);
-  overflow-y: auto;        
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: .25rem;
-  overflow: hidden; 
+  gap: 0.25rem;
+  overflow: hidden;
 }
 
 /* ===== CLOSE × ===== */
@@ -84,13 +93,16 @@
 }
 
 .file-name.has-file {
-  color: #586a85; 
+  color: #586a85;
 }
 
 .imgDisplay {
   width: 100%;
-  max-width: min(420px, 45vh); /* 420 px OR 45 % viewport – whichever is smaller */
-  aspect-ratio: 1;             /* keeps the crop box square */
+  max-width: min(
+    420px,
+    45vh
+  ); /* 420 px OR 45 % viewport – whichever is smaller */
+  aspect-ratio: 1; /* keeps the crop box square */
   margin: 0 auto;
   position: relative;
   display: flex;
@@ -103,7 +115,6 @@
   max-height: 100%;
   object-fit: contain;
 }
-
 
 .imgErrorMsg {
   color: rgb(224, 13, 13);
