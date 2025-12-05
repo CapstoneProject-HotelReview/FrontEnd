@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function home() {
   const [hotels, setHotels] = useState([]);
@@ -14,9 +14,9 @@ export default function home() {
   return (
     <div className="hotels-card">
       {hotels.map((hotel) => (
-        <link key={hotel.id} to={`/hotels/${hotel.id}`} className="hotel">
+        <Link key={hotel.id} to={`/hotels/${hotel.id}`} className="hotel">
           <h3>{}</h3>
-        </link>
+        </Link>
       ))}
     </div>
   );
