@@ -15,7 +15,9 @@ export default function home() {
     <div className="hotels-card">
       {hotels.map((hotel) => (
         <Link key={hotel.id} to={`/hotels/${hotel.id}`} className="hotel">
-          <h3>{}</h3>
+          <h3>{hotel.name}</h3>
+          <p>{hotel.description}</p>
+          <p>${hotel.price}</p>
         </Link>
       ))}
     </div>
