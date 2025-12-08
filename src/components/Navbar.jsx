@@ -8,7 +8,7 @@ export default function Navbar() {
     <header id="navbar">
        {/* Brand goes to home */}
       <NavLink id="brand" to="/">
-        <p>Frontend Template</p>
+        <p>GlobeStay</p>
       </NavLink>
 
 
@@ -17,10 +17,21 @@ export default function Navbar() {
           Home
         </NavLink>
 
-        {/* <NavLink to="/login">Login</NavLink> */}
-        {/* <NavLink to="/register">Register</NavLink> */}
-        {/* <NavLink to="/profile">Profile</NavLink> */}
-        {/* <NavLink to="/review">Reviews</NavLink> */}
+        <NavLink to="/login">
+          Login
+        </NavLink>
+
+        <NavLink to="/register">
+          Register
+        </NavLink>
+
+        <NavLink to="/userInfo">
+          Profile
+        </NavLink>
+
+        <NavLink to="/review">
+          Reviews
+        </NavLink>
 
         {token && (
           <button type="button" onClick={logout}>

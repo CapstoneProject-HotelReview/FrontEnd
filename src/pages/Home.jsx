@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function home() {
+
+export default function Home() {
   const [hotels, setHotels] = useState([]);
   useEffect(() => {
     async function fetchHotels() {
