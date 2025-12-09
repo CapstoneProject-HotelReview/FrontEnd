@@ -16,9 +16,17 @@ export default function Review() {
 
   useEffect(() => {
     fetch(`http://localhost:3000/hotels/${hotelId}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Hotel not found");
+        }
+        return res.json();
+      })
       .then((data) => setHotel(data))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
   }, [hotelId]);
 
   const handleRating = (value) => {
