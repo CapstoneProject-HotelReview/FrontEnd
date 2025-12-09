@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function home() {
+export default function Home() {
   const [hotels, setHotels] = useState([]);
   useEffect(() => {
     async function fetchHotels() {
@@ -14,10 +14,15 @@ export default function home() {
   return (
     <div className="hotels-card">
       {hotels.map((hotel) => (
-        <Link key={hotel.id} to={`/hotels/${hotel.id}`} className="hotel">
+        <Link key={hotel.id} to={`/reviews/${hotel.id}`} className="hotel">
           <h3>{hotel.name}</h3>
           <p>{hotel.description}</p>
           <p>${hotel.price}</p>
+          <img
+            src={hotel.image}
+            alt={hotel.name}
+            style={{ width: "100%", maxHeight: "400px", objectFit: "cover" }}
+          />
         </Link>
       ))}
     </div>
