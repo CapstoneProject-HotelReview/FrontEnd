@@ -19,9 +19,9 @@ export default function Home() {
           <p>{hotel.description}</p>
           <p>${hotel.price}</p>
           <img
+            className="hotel-image-home"
             src={hotel.image}
             alt={hotel.name}
-            style={{ width: "100%", maxHeight: "400px", objectFit: "cover" }}
           />
         </Link>
       ))}

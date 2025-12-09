@@ -66,13 +66,9 @@ export default function Review() {
       {hotel ? (
         <>
           <h2>{hotel.name}</h2>
-          <p>{hotel.description}</p>
+          <p className="hotel-description">{hotel.description}</p>
           <h3>{hotel.price}</h3>
-          <img
-            src={hotel.image}
-            alt={hotel.name}
-            style={{ width: "100%", maxHeight: "400px", objectFit: "cover" }}
-          />
+          <img className="hotel-image" src={hotel.image} alt={hotel.name} />
         </>
       ) : (
         <p>Loading hotel...</p>

@@ -7,6 +7,11 @@ h3 {
   color: blue;
 }
 
+.hotel-image-home {
+  width: 350px;
+  height: 350px;
+}
+
 .userPic {
   width: 200px;
   height: 200px;
