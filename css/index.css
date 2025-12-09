@@ -17,9 +17,9 @@ a {
 
   gap: 20px;
   padding: 0;
-  margin-bottom: 16px;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 95%;
   border: 1px solid black;
   border-radius: 10px;
   margin: 3ch;
@@ -48,12 +48,12 @@ a {
 
 .review-btn {
   margin: 3ch;
-  display: inline-block;
+  display: block;
   color: white;
   border: none;
   background-color: rgb(65, 148, 232);
   padding: 12px 0;
-  width: 100%;
+  width: 90%;
   border-radius: 10px;
   font-size: 16px;
 }
