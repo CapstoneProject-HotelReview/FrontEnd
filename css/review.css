@@ -16,6 +16,16 @@
   padding: 1ch;
 }
 
+.hotel-description {
+}
+
+.hotel-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
 .public-reviews {
   border: none;
   width: 95%;

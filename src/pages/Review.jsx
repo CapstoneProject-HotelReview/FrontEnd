@@ -1,29 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
+import { useParams } from "react-router-dom";
 
-export default function review() {
+export default function Review() {
+  const { id: hotelId } = useParams();
+  const [hotel, setHotel] = useState(null);
   const [subject, setSubject] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState(0);
 
-  // const { token } = useAuth();
-  // const isLoggedIn = Boolean(token);
+  const { token } = useAuth();
+  const isLoggedIn = Boolean(token);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/hotels/${hotelId}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Hotel not found");
+        }
+        return res.json();
+      })
+      .then((data) => setHotel(data))
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
+  }, [hotelId]);
 
   const handleRating = (value) => {
-    // if (!isLoggedIn) {
-    //   alert("You must be logged in to review this hotel");
-    //   return;
-    // }
+    if (!isLoggedIn) {
+      alert("You must be logged in to review this hotel");
+      return;
+    }
     setRating(value);
   };
 
   const tryAddReview = async () => {
-    // if (!isLoggedIn) {
-    //   alert("You must be logged in to review this hotel");
-    //   return;
-    // }
+    if (!isLoggedIn) {
+      alert("You must be logged in to review this hotel");
+      return;
+    }
     setError(null);
     try {
       const newReview = {
@@ -45,6 +63,16 @@ export default function review() {
 
   return (
     <div className="reviews-card">
+      {hotel ? (
+        <>
+          <h2>{hotel.name}</h2>
+          <p className="hotel-description">{hotel.description}</p>
+          <h3>{hotel.price}</h3>
+          <img className="hotel-image" src={hotel.image} alt={hotel.name} />
+        </>
+      ) : (
+        <p>Loading hotel...</p>
+      )}
       <div className="public-reviews">
         <div className="reviews-title">
           <h3>Reviews</h3>

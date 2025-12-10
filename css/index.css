@@ -4,9 +4,63 @@
 }
 
 h3 {
-  color: blue;
+  color: rgb(65, 148, 232);
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.hotels-card {
+  display: flex;
+
+  gap: 20px;
+  padding: 0;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 3ch;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hotel-top {
+  display: flex;
+  gap: 20px;
+  padding: 16px;
+}
+
+.hotel-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hotel-image-home {
+  width: 400px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.review-btn {
+  margin: 3ch;
+  display: block;
+  color: white;
+  border: none;
+  background-color: rgb(65, 148, 232);
+  padding: 12px 0;
+  width: 90%;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.review-btn:hover {
+  background-color: #0056b3;
+}
 .userPic {
   width: 200px;
   height: 200px;
