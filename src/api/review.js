@@ -2,7 +2,7 @@ const API = import.meta.env.VITE_API;
 
 export async function addReview() {}
 
-export async function getReviews(userId, page = 1, token) {
+export async function getReviews(userId, page = 1, limit, token) {
   try {
     const response = await fetch(`${API}/reviews/${userId}/reviews?page=${page}`, {
       headers: {
