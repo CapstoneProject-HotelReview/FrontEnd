@@ -1,11 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { useAuth } from "../auth/AuthContext";
-import { getUserInfo } from "../api/user";
 import { Link, useNavigate } from "react-router";
 import Modal from "../components/Profile/Modal";
+import ReviewCard from "../components/Profile/ReviewCard";
+
+import { getUserInfo } from "../api/user";
 
 export default function Profile() {
-  const { logout, token } = useAuth();
+  const { token } = useAuth();
   const [userInfo, setUserInfo] = useState(null);
   const navigate = useNavigate();
   const userPicUrl = useRef("/DefaultProfilePicIcon.png");
@@ -46,6 +48,10 @@ export default function Profile() {
       </div>
       <div className="profileInfo">
         <h2>{`${userInfo.firstname} ${userInfo.lastname}`}</h2>
+        {/* <h3>{`${userInfo.location}`}</h3> */}
+      </div>
+      <div className="userReviews">
+        <ReviewCard userInfo={userInfo} token={token} />
       </div>
     </>
   );
