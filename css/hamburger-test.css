@@ -1,0 +1,86 @@
+/* ===== Navbar layout ===== */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* makes the title in the center */
+  padding: 0 1rem;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+}
+
+#navbar #brand {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* ===== Hamburger button ===== */
+.hamburger-button {
+  position: absolute;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 28px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hamburger-button span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+}
+
+/* ===== Side menu panel ===== */
+.side-menu {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 240px;
+  height: calc(100vh - 60px);
+  background-color: white;
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 900;
+}
+
+.side-menu--open {
+  transform: translateX(0);
+}
+
+.side-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Links & buttons in menu */
+.side-menu a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.95rem;
+}
+
+.menu-search,
+.menu-logout {
+  border: 1px solid #000;
+  background: transparent;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
