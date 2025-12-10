@@ -100,12 +100,8 @@ export default function Review() {
             <div className="rate-btn">
               <h4>Rate this hotel.</h4>
               {[1, 2, 3, 4, 5].map((value) => (
-                <span
-                  key={value}
-                  data-value={value}
-                  onClick={() => handleRating(value)}
-                >
-                  🌎
+                <span key={value} onClick={() => handleRating(value)}>
+                  {value <= rating ? "🌍" : "🌎"}
                 </span>
               ))}
             </div>
