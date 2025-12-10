@@ -3,7 +3,6 @@ import { NavLink } from "react-router";
 import { useAuth } from "../auth/AuthContext";
 import "../../css/hamburger-test.css";
 
-
 export default function Navbar() {
   const { token, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,8 +14,8 @@ export default function Navbar() {
   function closeMenu() {
     setIsMenuOpen(false);
   }
-  
-return (
+
+  return (
     <>
       <header id="navbar">
         {/* Hamburger button */}
@@ -42,11 +41,7 @@ return (
       <aside className={`side-menu ${isMenuOpen ? "side-menu--open" : ""}`}>
         <nav>
           {/* Search button (placeholder for now) */}
-          <button
-            type="button"
-            className="menu-search"
-            onClick={closeMenu}
-          >
+          <button type="button" className="menu-search" onClick={closeMenu}>
             Search
           </button>
 

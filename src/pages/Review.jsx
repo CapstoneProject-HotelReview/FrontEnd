@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { useParams } from "react-router-dom";
+import { getHotelById } from "../api/hotel";
 
 export default function Review() {
   const { id: hotelId } = useParams();
@@ -15,19 +16,19 @@ export default function Review() {
   const isLoggedIn = Boolean(token);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/hotels/${hotelId}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Hotel not found");
-        }
-        return res.json();
-      })
-      .then((data) => setHotel(data))
-      .catch((err) => {
-        console.error(err);
-        setError(err.message);
-      });
-  }, [hotelId]);
+    async function fetchHotel() {
+      const h = await getHotelById(hotelId, token);
+      console.log("fetched hotel:", h);
+      if (!hotelId) return;
+
+      if (!h) {
+        setError("Hotel not found");
+      } else {
+        setHotel(h);
+      }
+    }
+    fetchHotel();
+  }, [hotelId, token]);
 
   const handleRating = (value) => {
     if (!isLoggedIn) {
@@ -62,68 +63,78 @@ export default function Review() {
   };
 
   return (
-    <div className="reviews-card">
-      {hotel ? (
-        <>
-          <h2>{hotel.name}</h2>
-          <p className="hotel-description">{hotel.description}</p>
-          <h3>{hotel.price}</h3>
-          <img className="hotel-image" src={hotel.image} alt={hotel.name} />
-        </>
-      ) : (
-        <p>Loading hotel...</p>
-      )}
-      <div className="public-reviews">
-        <div className="reviews-title">
-          <h3>Reviews</h3>
-        </div>
+    <>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          tryAddReview();
+        }}
+      >
+        <div className="reviews-card">
+          {hotel ? (
+            <>
+              <h2>{hotel.name}</h2>
+              <p className="hotel-description">{hotel.description}</p>
+              <h3>{hotel.price}</h3>
+              <img className="hotel-image" src={hotel.image} alt={hotel.name} />
+            </>
+          ) : (
+            <p>Loading hotel...</p>
+          )}
+          <div className="public-reviews">
+            <div className="reviews-title">
+              <h3>Reviews</h3>
+            </div>
 
-        {reviews.length === 0 && <p>No reviews yet.</p>}
-        {reviews.map((r, index) => (
-          <div key={index}>
-            <h4>{r.subject}</h4>
-            <p>{r.text}</p>
-            <p>Rating:{r.rating}/5🌎</p>
+            {reviews.length === 0 && <p>No reviews yet.</p>}
+            {reviews.map((r, index) => (
+              <div key={index}>
+                <h4>{r.subject}</h4>
+                <p>{r.text}</p>
+                <p>Rating:{r.rating}/5🌎</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      <div className="makeareview">
-        <div className="rate-btn">
-          <h4>Rate this hotel.</h4>
-          {[1, 2, 3, 4, 5].map((value) => (
-            <span
-              key={value}
-              data-value={value}
-              onClick={() => handleRating(value)}
-            >
-              🌎
-            </span>
-          ))}
+          <div className="makeareview">
+            <div className="rate-btn">
+              <h4>Rate this hotel.</h4>
+              {[1, 2, 3, 4, 5].map((value) => (
+                <span
+                  key={value}
+                  data-value={value}
+                  onClick={() => handleRating(value)}
+                >
+                  🌎
+                </span>
+              ))}
+            </div>
+
+            <input
+              type="text"
+              id="subject"
+              placeholder="Title your review"
+              className="subject_line"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+
+            <input
+              type="text"
+              id="text-box"
+              className="review-textbox"
+              placeholder="Write your review here."
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+
+            <button id="submit" className="submit-btn" onClick={tryAddReview}>
+              submit
+            </button>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+          </div>
         </div>
-        <input
-          type="text"
-          id="subject"
-          placeholder="Title your review"
-          className="subject_line"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-        />
-        <input
-          type="text"
-          id="text-box"
-          className="review-textbox"
-          placeholder="Write your review here."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-
-        <button id="submit" className="submit-btn" onClick={tryAddReview}>
-          submit
-        </button>
-
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </div>
-    </div>
+      </form>
+    </>
   );
 }
