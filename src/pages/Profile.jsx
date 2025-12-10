@@ -51,7 +51,7 @@ export default function Profile() {
         {/* <h3>{`${userInfo.location}`}</h3> */}
       </div>
       <div className="userReviews">
-        <ReviewCard userId={userInfo.id} token={token} />
+        <ReviewCard userInfo={userInfo} token={token} />
       </div>
     </>
   );
