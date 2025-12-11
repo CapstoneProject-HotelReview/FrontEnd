@@ -91,7 +91,7 @@ export default function Review() {
               <div key={index}>
                 <h4>{r.subject}</h4>
                 <p>{r.text}</p>
-                <p>Rating:{r.rating}/5🌎</p>
+                <p>{"🌎".repeat(r.rating)}</p>
               </div>
             ))}
           </div>
