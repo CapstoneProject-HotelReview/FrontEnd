@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 const FILTER_OPTIONS = [
-  { value: "NAME_ASC", label: "Name A–Z" },
-  { value: "NAME_DESC", label: "Name Z–A" },
+  { value: "NAME_ASC", label: "Name A-Z" },
+  { value: "NAME_DESC", label: "Name Z-A" },
   { value: "PRICE_ASC", label: "Price: Low to High" },
   { value: "PRICE_DESC", label: "Price: High to Low" },
 ];

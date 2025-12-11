@@ -200,8 +200,6 @@ a {
   height: 150px;
 }
 
-/* ====== HOME FILTER LAYOUT (Tyler's feature) ====== */
-
 /* top bar on the Home page that holds the Filter button */
 .home-header {
   display: flex;
@@ -230,7 +228,6 @@ a {
   gap: 4px;
 }
 
-/* small ▼ / ▲ arrow */
 .filter-toggle-arrow {
   font-size: 12px;
 }
@@ -268,7 +265,7 @@ a {
 }
 
 .filter-option-btn.active {
-  background: #4194e8;      /* matches your blue */
+  background: #4194e8;
   border-color: #2f7ed0;
   color: white;
 }
