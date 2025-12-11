@@ -133,6 +133,7 @@
 
 .subject_line:hover,
 .review-textbox:hover {
+  border: 2px solid;
   border-color: rgb(33, 105, 177);
 }
 
