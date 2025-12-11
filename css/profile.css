@@ -1,0 +1,17 @@
+.profile-page {
+  margin-top: 3ch;
+}
+.editBtn {
+  background-color: rgb(65, 148, 232);
+  color: white;
+  border: none;
+  border-radius: 3px;
+}
+
+.editBtn:hover {
+  background-color: rgb(33, 105, 177);
+}
+
+.userReviews {
+  border-top: 1px solid black;
+}
