@@ -18,7 +18,7 @@ export default function Review() {
   useEffect(() => {
     async function fetchHotel() {
       const h = await getHotelById(hotelId, token);
-      console.log("fetched hotel:", h);
+
       if (!hotelId) return;
 
       if (!h) {
@@ -110,7 +110,11 @@ export default function Review() {
             <div className="rate-btn">
               <h4 className="rt-hotel">Rate this hotel</h4>
               {[1, 2, 3, 4, 5].map((value) => (
-                <span key={value} onClick={() => handleRating(value)}>
+                <span
+                  className="globe"
+                  key={value}
+                  onClick={() => handleRating(value)}
+                >
                   {value <= rating ? "🌍" : "🌎"}
                 </span>
               ))}

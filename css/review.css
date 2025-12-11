@@ -8,7 +8,7 @@
 
 .rt-hotel {
   font-size: larger;
-  border-bottom: 1px solid black;
+
   color: rgb(65, 148, 232);
 }
 
@@ -67,11 +67,12 @@
 
 .rate-btn {
   height: auto;
-  display: block;
-  align-self: center;
+  text-align: center;
   width: 50ch;
   margin: 3ch;
   padding: 1ch;
+  width: 75%;
+  border-bottom: 1px solid black;
 }
 
 .rate-btn span {
@@ -133,4 +134,8 @@
 .subject_line:hover,
 .review-textbox:hover {
   border-color: rgb(33, 105, 177);
+}
+
+.globe:hover {
+  text-shadow: -5px -5px 5px rgb(65, 148, 232);
 }
