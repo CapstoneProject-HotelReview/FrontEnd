@@ -18,8 +18,8 @@ export default function Profile() {
       if (!token) return;
       try {
         const data = await getUserInfo(token);
-        /*********************************/
-        console.log(data);
+        /***********************************/
+        console.log("Profile Page: ", data);
         setUserInfo(data);
       } catch (error) {
         console.error("Error loading account details: ", error);

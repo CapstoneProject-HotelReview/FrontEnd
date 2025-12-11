@@ -3,7 +3,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import "../../css/hamburger-test.css";
 
-
 export default function Navbar() {
   const { token, logout } = useAuth();
   const navigate = useNavigate();
@@ -18,19 +17,8 @@ export default function Navbar() {
   function closeMenu() {
     setIsMenuOpen(false);
   }
-  
-  function handleSearchSubmit(event) {
-    event.preventDefault();
 
-    const trimmed = searchTerm.trim();
-    if (!trimmed) return;
-
-    navigate(`/search?query=${encodeURIComponent(trimmed)}`);
-    closeMenu();
-  }
-
-
-return (
+  return (
     <>
       <header id="navbar">
         {/* Hamburger button */}
@@ -55,16 +43,10 @@ return (
       {/* Slide-out side menu */}
       <aside className={`side-menu ${isMenuOpen ? "side-menu--open" : ""}`}>
         <nav>
-          {/* Search bar at the top of the menu */}
-          <form className="menu-search" onSubmit={handleSearchSubmit}>
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-            />
-            <button type="submit">Search</button>
-          </form>
+          {/* Search button (placeholder for now) */}
+          <button type="button" className="menu-search" onClick={closeMenu}>
+            Search
+          </button>
 
           <NavLink to="/login" onClick={closeMenu}>
             Login / Register

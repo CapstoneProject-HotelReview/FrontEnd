@@ -5,12 +5,13 @@ export default function ReviewCard({ userInfo, token }) {
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
   // TODO: Set up loading and error useState
-
+  /***********************************************/
+  console.log("Review card UserInfo: ", userInfo);
   useEffect(() => {
     async function getUserReviews() {
       if (!token || !userInfo?.id) return;
       try {
-        const data = await getReviews(userInfo?.id, page, token);
+        const data = await getReviews(userInfo?.id, page, 3, token);
         setReviews(data);
       } catch (error) {
         console.error("Error loading users reviews: ", error);
@@ -27,8 +28,8 @@ export default function ReviewCard({ userInfo, token }) {
   };
   /**************************************/
   console.log("User Reviews: ", reviews);
-  //TODO: Set up loading, error, no reviews handler (like if statement below)
-  // if (reviews.length === 0) return <p>No Reviews Yet</p>;
+  // TODO: Set up loading, error, no reviews handler (like if statement below)
+  if (reviews.length === 0) return <p>No Reviews Yet</p>;
 
   return (
     <div className="reviewCardContainer">
