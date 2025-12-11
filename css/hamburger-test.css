@@ -79,8 +79,19 @@
 .menu-search,
 .menu-logout {
   border: 1px solid #000;
-  background: transparent;
+  background: rgb(65, 148, 232);
+  color: white;
+  border-radius: 5px;
   padding: 0.3rem 0.7rem;
   cursor: pointer;
   font-size: 0.95rem;
+}
+
+.menu-search:hover,
+.menu-logout:hover {
+  background-color: rgb(33, 105, 177);
+}
+
+.menu-link:hover {
+  border-bottom: 1px solid black;
 }

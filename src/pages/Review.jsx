@@ -71,16 +71,26 @@ export default function Review() {
         }}
       >
         <div className="reviews-card">
-          {hotel ? (
-            <>
-              <h2>{hotel.name}</h2>
-              <p className="hotel-description">{hotel.description}</p>
-              <h3>{hotel.price}</h3>
-              <img className="hotel-image" src={hotel.image} alt={hotel.name} />
-            </>
-          ) : (
-            <p>Loading hotel...</p>
-          )}
+          <article className="title-card">
+            {hotel ? (
+              <>
+                <div className="left-side">
+                  <img
+                    className="hotel-image"
+                    src={hotel.image}
+                    alt={hotel.name}
+                  />
+                </div>
+                <article className="right-side">
+                  <h2>{hotel.name}</h2>
+                  <p>{hotel.description}</p>
+                  <h3 className="hotel-price">{hotel.price}</h3>
+                </article>
+              </>
+            ) : (
+              <p>Loading hotel...</p>
+            )}
+          </article>
           <div className="public-reviews">
             <div className="reviews-title">
               <h3>Reviews</h3>
@@ -91,14 +101,14 @@ export default function Review() {
               <div key={index}>
                 <h4>{r.subject}</h4>
                 <p>{r.text}</p>
-                <p>Rating:{r.rating}/5🌎</p>
+                <p>{"🌎".repeat(r.rating)}</p>
               </div>
             ))}
           </div>
 
           <div className="makeareview">
             <div className="rate-btn">
-              <h4>Rate this hotel.</h4>
+              <h4 className="rt-hotel">Rate this hotel</h4>
               {[1, 2, 3, 4, 5].map((value) => (
                 <span key={value} onClick={() => handleRating(value)}>
                   {value <= rating ? "🌍" : "🌎"}
@@ -106,27 +116,30 @@ export default function Review() {
               ))}
             </div>
 
-            <input
-              type="text"
-              id="subject"
-              placeholder="Title your review"
-              className="subject_line"
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-            />
+            <div className="review-input">
+              <input
+                type="text"
+                id="subject"
+                placeholder="Title your review"
+                className="subject_line"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+              />
 
-            <input
-              type="text"
-              id="text-box"
-              className="review-textbox"
-              placeholder="Write your review here."
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
+              <input
+                type="text"
+                id="text-box"
+                className="review-textbox"
+                placeholder="Write your review here."
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
 
-            <button id="submit" className="submit-btn" onClick={tryAddReview}>
-              submit
-            </button>
+              <button id="submit" className="submit-btn">
+                submit
+              </button>
+            </div>
+
             {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
         </div>

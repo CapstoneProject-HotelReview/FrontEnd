@@ -1,0 +1,58 @@
+.login-title {
+  color: rgb(65, 148, 232);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-link {
+  color: rgb(65, 148, 232);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3ch;
+}
+
+.register-link:hover {
+  color: rgb(33, 105, 177);
+}
+
+.login-btn {
+  background-color: rgb(65, 148, 232);
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 25%;
+  margin: 3ch;
+  color: white;
+}
+
+.login-btn:hover {
+  background-color: rgb(33, 105, 177);
+}
+
+.login-username,
+.login-password {
+  display: flex;
+  align-content: center;
+  gap: 1ch;
+  width: 100%;
+  margin-top: 1ch;
+  padding: 1ch;
+}
+
+.login-username:hover,
+.login-password:hover {
+  border: 2px solid rgb(65, 148, 232);
+  border-radius: 2px;
+}
+
+.log-label {
+  font-size: 15px;
+}
