@@ -30,12 +30,29 @@
   height: 30px;
   width: 25%;
   margin: 3ch;
+  color: white;
 }
 
-.login-username {
-  margin: 1ch;
+.login-btn:hover {
+  background-color: rgb(33, 105, 177);
 }
 
+.login-username,
 .login-password {
-  margin: 1ch;
+  display: flex;
+  align-content: center;
+  gap: 1ch;
+  width: 100%;
+  margin-top: 1ch;
+  padding: 1ch;
+}
+
+.login-username:hover,
+.login-password:hover {
+  border: 2px solid rgb(65, 148, 232);
+  border-radius: 2px;
+}
+
+.log-label {
+  font-size: 15px;
 }

@@ -14,7 +14,7 @@
 .reg-name {
   display: flex;
   gap: 1ch;
-  width: 20ch;
+  width: 100%;
   margin: 1ch;
   padding: 1ch;
 }
@@ -22,7 +22,7 @@
 .reg-user {
   display: flex;
   gap: 1ch;
-  width: 20ch;
+  width: 100%;
   margin: 1ch;
   padding: 1ch;
 }
@@ -30,7 +30,7 @@
 .reg-password {
   display: flex;
   gap: 1ch;
-  width: 20ch;
+  width: 100%;
   margin: 1ch;
   padding: 1ch;
 }
