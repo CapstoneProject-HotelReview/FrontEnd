@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
 
 export default function Home() {
+  const { token } = useAuth();
+
   const [hotels, setHotels] = useState([]);
   useEffect(() => {
     async function fetchHotels() {
@@ -26,13 +29,25 @@ export default function Home() {
               <p>{hotel.description}</p>
               <p className="hotel-price">${hotel.price}</p>
 
-              <Link
-                key={hotel.id}
-                to={`/reviews/${hotel.id}`}
-                className="hotel"
-              >
-                <button className="review-btn"> Review hotel</button>
-              </Link>
+              {token ? (
+                <Link
+                  key={hotel.id}
+                  to={`/reviews/${hotel.id}`}
+                  className="hotel"
+                >
+                  <button className="review-btn"> Review hotel</button>
+                </Link>
+              ) : (
+                <Link
+                  key={hotel.id}
+                  to={`/reviews/${hotel.id}`}
+                  className="hotel"
+                >
+                  <button className="review-btn">
+                    View reviews for this hotel
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

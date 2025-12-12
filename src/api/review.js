@@ -20,4 +20,22 @@ export async function getReviews(userId, page = 1, token) {
   }
 }
 
-export async function addReview() {}
+export async function addReview(hotelId, token, rating, subject, review) {
+  try {
+    const response = await fetch(`${API}/reviews/${hotelId}/review`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ rating, subject, review }),
+    });
+
+    const result = await response.text();
+    if (!response.ok) throw new Error(result);
+    return result;
+  } catch (error) {
+    console.error("Error with /POST hotel reviews", error);
+    throw error;
+  }
+}
