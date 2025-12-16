@@ -52,7 +52,6 @@ export default function Profile() {
         </div>
         <div className="profileInfo">
           <h2>{`${userInfo.firstname} ${userInfo.lastname}`}</h2>
-          {/* <h3>{`${userInfo.location}`}</h3> */}
         </div>
         <div className="userReviews">
           <ReviewCard userInfo={userInfo} token={token} />

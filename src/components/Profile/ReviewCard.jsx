@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { getReviews } from "../../api/review";
+import { getReviewsByUserId } from "../../api/review";
 
 export default function ReviewCard({ userInfo, token }) {
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
   // TODO: Set up loading and error useState
   /***********************************************/
-  console.log("Review card UserInfo: ", userInfo);
+  // console.log("Review card UserInfo: ", userInfo);
   useEffect(() => {
     async function getUserReviews() {
       if (!token || !userInfo?.id) return;
       try {
-        const data = await getReviews(userInfo?.id, page, token);
+        const data = await getReviewsByUserId(userInfo?.id, page, token);
         setReviews(data);
       } catch (error) {
         console.error("Error loading users reviews: ", error);
@@ -27,7 +27,7 @@ export default function ReviewCard({ userInfo, token }) {
     setPage(page + 1);
   };
   /**************************************/
-  console.log("User Reviews: ", reviews);
+  // console.log("User Reviews: ", reviews);
   // TODO: Set up loading, error, no reviews handler (like if statement below)
   if (reviews.length === 0) return <p>No Reviews Yet</p>;
 

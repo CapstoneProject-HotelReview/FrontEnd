@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { useParams } from "react-router-dom";
 import { getHotelById } from "../api/hotel";
-import { getReviews } from "../api/review";
+import { getReviewsByHotelId } from "../api/review";
 import { getUserInfo } from "../api/user";
 
 export default function Review() {
-  const [userInfo, setUserInfo] = useState(null);
   const { id: hotelId } = useParams();
   const [hotel, setHotel] = useState(null);
   const [subject, setSubject] = useState("");
@@ -20,19 +19,23 @@ export default function Review() {
 
   useEffect(() => {
     async function fetchHotel() {
-      const h = await getHotelById(hotelId, token);
-      const data = await getUserInfo(token);
-      const allReviews = await getReviews(userInfo?.id, page, token);
-      setReviews(allReviews);
-      if (!hotelId) return;
-      if (!h) {
-        setError("Hotel not found");
-      } else {
-        setHotel(h);
+      try {
+        const h = await getHotelById(hotelId, token); 
+        const allReviews = await getReviewsByHotelId(hotelId, page);
+        setReviews(allReviews);
+        if (!hotelId) return;
+        if (!h) {
+          setError("Hotel not found");
+        } else {
+          setHotel(h);
+        }
+      } catch (error) {
+        console.error("Error fetching hotel or reviews: ", error);
+        setError("Failed to fetch hotel or reviews");
       }
     }
     fetchHotel();
-  }, [hotelId, token]);
+  }, [hotelId, page]);
 
   const handleRating = (value) => {
     if (!isLoggedIn) {
@@ -120,7 +123,7 @@ export default function Review() {
           {reviews.map((r, index) => (
             <div key={index}>
               <h4>{r.subject}</h4>
-              <p>{r.text}</p>
+              <p>{r.review}</p>
               <p>{":earth_americas:".repeat(r.rating)}</p>
             </div>
           ))}
