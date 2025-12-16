@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import ReactCrop, { centerCrop, convertToPixelCrop, makeAspectCrop } from "react-image-crop";
 import setCanvasPreview from "../../setCanvasPreview";
+import { addUserProfilePic } from "../../api/user";
 
 const ASPECT_RATIO = 1;
 const MIN_DIMENSION = 150;
@@ -33,8 +34,9 @@ export default function ImageCropper({ onFileSelect, updateUserPic, closeModal }
           return setImgSrc("");
         }
       });
-
       setImgSrc(imageUrl);
+      /*********************************/
+      console.log("ProfileUrl", imgSrc);
     });
     reader.readAsDataURL(file);
   };

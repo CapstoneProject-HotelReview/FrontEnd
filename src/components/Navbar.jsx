@@ -67,9 +67,11 @@ export default function Navbar() {
             </button>
           </form>
 
-          <NavLink className="menu-link" to="/login" onClick={closeMenu}>
-            Login / Register
-          </NavLink>
+          {!token && (
+            <NavLink className="menu-link" to="/login" onClick={closeMenu}>
+              Login / Register
+            </NavLink>
+          )}
 
           <NavLink className="menu-link" to="/userInfo" onClick={closeMenu}>
             Profile
