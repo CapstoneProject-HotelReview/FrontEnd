@@ -100,6 +100,8 @@ export default function ImageCropper({ onFileSelect, updateUserPic, closeModal }
                 convertToPixelCrop(crop, imgReference.current.width, imgReference.current.height)
               );
               const dataUrl = previewCanvasReference.current.toDataURL();
+              /*********************************/
+              console.log("DataURL: ", dataUrl);
               updateUserPic(dataUrl);
               closeModal();
             }}
