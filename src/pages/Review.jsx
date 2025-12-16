@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { useParams } from "react-router-dom";
 import { getHotelById } from "../api/hotel";
-import { getReviews } from "../api/review";
+import { getReviewsByHotelId } from "../api/review";
 import { getUserInfo } from "../api/user";
 
 export default function Review() {
-  const [userInfo, setUserInfo] = useState(null);
   const { id: hotelId } = useParams();
   const [hotel, setHotel] = useState(null);
   const [subject, setSubject] = useState("");
@@ -22,7 +21,7 @@ export default function Review() {
     async function fetchHotel() {
       const h = await getHotelById(hotelId, token);
       const data = await getUserInfo(token);
-      const allReviews = await getReviews(userInfo?.id, page, token);
+      const allReviews = await getReviewsByHotelId(hotelId, page);
       setReviews(allReviews);
       if (!hotelId) return;
       if (!h) {

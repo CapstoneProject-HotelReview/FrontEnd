@@ -7,6 +7,8 @@ export default function Navbar() {
   const { token, logout } = useAuth();
   const navigate = useNavigate();
 
+  const [error, setError] = useState(null);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -18,16 +20,24 @@ export default function Navbar() {
     setIsMenuOpen(false);
   }
 
-   function handleSearchSubmit(event) {
+  function handleSearchSubmit(event) {
     event.preventDefault();
 
-     const trimmed = searchTerm.trim();
+    const trimmed = searchTerm.trim();
     if (!trimmed) return;
 
     navigate(`/search?query=${encodeURIComponent(trimmed)}`);
     closeMenu();
   }
 
+  const onLogout = () => {
+    try {
+      logout();
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
     <>
@@ -73,9 +83,11 @@ export default function Navbar() {
             </NavLink>
           )}
 
-          <NavLink className="menu-link" to="/userInfo" onClick={closeMenu}>
-            Profile
-          </NavLink>
+          {token && (
+            <NavLink className="menu-link" to="/userInfo" onClick={closeMenu}>
+              Profile
+            </NavLink>
+          )}
 
           <NavLink className="menu-link" to="/" end onClick={closeMenu}>
             Home
@@ -86,7 +98,7 @@ export default function Navbar() {
               type="button"
               className="menu-logout"
               onClick={() => {
-                logout();
+                onLogout();
                 closeMenu();
               }}
             >

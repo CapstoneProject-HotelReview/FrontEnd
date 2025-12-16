@@ -39,12 +39,13 @@ export default function Profile() {
     <>
       <div className="profile-page">
         <div className="profilePic">
-          <img src={userPicUrl.current} alt="avatar" className="userPic" />
+          <img src={userInfo.profilePic || userPicUrl.current} alt="avatar" className="userPic" />
           <button className="editBtn" onClick={() => setModalOpen(true)}>
             Edit
           </button>
           {modalOpen && (
             <Modal
+              userInfo={userInfo}
               updateUserPic={updateUserPic}
               closeModal={() => setModalOpen(false)}
             />
