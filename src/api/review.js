@@ -24,7 +24,10 @@ export async function getReviewsByHotelId(hotelId, page = 1) {
         "Content-Type": "application/json",
       },
     });
-    if (!response.ok) throw new Error(response.statusText);
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(text); 
+    }
     const result = await response.json();
     return result;
   } catch (error) {
