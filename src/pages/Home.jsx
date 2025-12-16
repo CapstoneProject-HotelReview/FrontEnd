@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
 import Filter from "../components/Filter";
 
 export default function Home() {
+  const { token } = useAuth();
+
   const [hotels, setHotels] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState(null);
 
@@ -67,13 +70,29 @@ export default function Home() {
             <div className="hotel-info">
               <h3>{hotel.name}</h3>
               <p>{hotel.description}</p>
-              <p>${hotel.price}</p>
+              <p className="hotel-price">${hotel.price}</p>
+
+              {token ? (
+                <Link
+                  key={hotel.id}
+                  to={`/reviews/${hotel.id}`}
+                  className="hotel"
+                >
+                  <button className="review-btn"> Review hotel</button>
+                </Link>
+              ) : (
+                <Link
+                  key={hotel.id}
+                  to={`/reviews/${hotel.id}`}
+                  className="hotel"
+                >
+                  <button className="review-btn">
+                    View reviews for this hotel
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
-
-          <Link key={hotel.id} to={`/reviews/${hotel.id}`} className="hotel">
-            <button className="review-btn"> Review hotel</button>
-          </Link>
         </div>
       ))}
     </div>

@@ -67,15 +67,15 @@ export default function Navbar() {
             </button>
           </form>
 
-          <NavLink to="/login" onClick={closeMenu}>
+          <NavLink className="menu-link" to="/login" onClick={closeMenu}>
             Login / Register
           </NavLink>
 
-          <NavLink to="/userInfo" onClick={closeMenu}>
+          <NavLink className="menu-link" to="/userInfo" onClick={closeMenu}>
             Profile
           </NavLink>
 
-          <NavLink to="/" end onClick={closeMenu}>
+          <NavLink className="menu-link" to="/" end onClick={closeMenu}>
             Home
           </NavLink>
 

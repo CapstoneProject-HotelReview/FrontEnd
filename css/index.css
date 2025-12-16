@@ -3,8 +3,18 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-h3 {
+.hotel-price {
   color: rgb(65, 148, 232);
+  text-decoration: underline;
+  font-style: oblique;
+  font-weight: bolder;
+  padding-top: 10ch;
+}
+
+.hotel-price p {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 a {
