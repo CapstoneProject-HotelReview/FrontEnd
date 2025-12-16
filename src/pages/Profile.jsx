@@ -37,21 +37,26 @@ export default function Profile() {
 
   return (
     <>
-      <div className="profilePic">
-        <img src={userPicUrl.current} alt="avatar" className="userPic" />
-        <button className="editBtn" onClick={() => setModalOpen(true)}>
-          Edit
-        </button>
-        {modalOpen && (
-          <Modal updateUserPic={updateUserPic} closeModal={() => setModalOpen(false)} />
-        )}
-      </div>
-      <div className="profileInfo">
-        <h2>{`${userInfo.firstname} ${userInfo.lastname}`}</h2>
-        {/* <h3>{`${userInfo.location}`}</h3> */}
-      </div>
-      <div className="userReviews">
-        <ReviewCard userInfo={userInfo} token={token} />
+      <div className="profile-page">
+        <div className="profilePic">
+          <img src={userPicUrl.current} alt="avatar" className="userPic" />
+          <button className="editBtn" onClick={() => setModalOpen(true)}>
+            Edit
+          </button>
+          {modalOpen && (
+            <Modal
+              updateUserPic={updateUserPic}
+              closeModal={() => setModalOpen(false)}
+            />
+          )}
+        </div>
+        <div className="profileInfo">
+          <h2>{`${userInfo.firstname} ${userInfo.lastname}`}</h2>
+          {/* <h3>{`${userInfo.location}`}</h3> */}
+        </div>
+        <div className="userReviews">
+          <ReviewCard userInfo={userInfo} token={token} />
+        </div>
       </div>
     </>
   );
