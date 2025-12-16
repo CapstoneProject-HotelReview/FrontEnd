@@ -1,6 +1,7 @@
 import "react-image-crop/dist/ReactCrop.css";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
+import Search from "./components/Menu/Search";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/reviews/:id" element={<Review />} />
         <Route path="/userInfo" element={<Profile />} />
+        <Route path="/search" element={<Search />} />
       </Route>
     </Routes>
   );
