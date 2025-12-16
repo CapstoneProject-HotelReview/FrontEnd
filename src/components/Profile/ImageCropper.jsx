@@ -1,14 +1,11 @@
 import { useRef, useState } from "react";
-import { useAuth } from "../../auth/AuthContext";
 import ReactCrop, { centerCrop, convertToPixelCrop, makeAspectCrop } from "react-image-crop";
 import setCanvasPreview from "../../setCanvasPreview";
-import { addUserProfilePic } from "../../api/user";
 
 const ASPECT_RATIO = 1;
 const MIN_DIMENSION = 150;
 
-export default function ImageCropper({ onFileSelect, userInfo, updateUserPic, closeModal }) {
-  const { token } = useAuth();
+export default function ImageCropper({ onFileSelect, updateUserPic, closeModal }) {
   const imgReference = useRef(null);
   const previewCanvasReference = useRef(null);
   const [fileName, setFileName] = useState("");
@@ -36,6 +33,7 @@ export default function ImageCropper({ onFileSelect, userInfo, updateUserPic, cl
           return setImgSrc("");
         }
       });
+
       setImgSrc(imageUrl);
     });
     reader.readAsDataURL(file);
@@ -95,7 +93,7 @@ export default function ImageCropper({ onFileSelect, userInfo, updateUserPic, cl
           </div>
           <button
             className="crop-btn"
-            onClick={async () => {
+            onClick={() => {
               setCanvasPreview(
                 imgReference.current,
                 previewCanvasReference.current,
@@ -104,7 +102,6 @@ export default function ImageCropper({ onFileSelect, userInfo, updateUserPic, cl
               const dataUrl = previewCanvasReference.current.toDataURL();
               /*********************************/
               console.log("DataURL: ", dataUrl);
-              await addUserProfilePic(token, { profilePic: dataUrl });
               updateUserPic(dataUrl);
               closeModal();
             }}
