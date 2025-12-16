@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getHotelById } from "../api/hotel";
 import { getReviews } from "../api/review";
 import { getUserInfo } from "../api/user";
+
 export default function Review() {
   const [userInfo, setUserInfo] = useState(null);
   const { id: hotelId } = useParams();
@@ -71,9 +72,11 @@ export default function Review() {
   const onAddReview = async (formData) => {
     if (!isLoggedIn) return alert("You must be logged in to review this hotel");
     if (rating === 0) return alert("Please select a rating");
+
     const subject_line = formData.get("subject-line");
     const review_textbox = formData.get("review-textbox");
     console.log(subject_line, review_textbox);
+    
     try {
       const newReview = {
         subject: subject,
@@ -89,7 +92,7 @@ export default function Review() {
       setError(error.message);
     }
   };
-  
+
   return (
     <>
       <div className="reviews-card">
