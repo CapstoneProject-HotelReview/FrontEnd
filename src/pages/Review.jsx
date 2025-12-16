@@ -104,6 +104,13 @@ export default function Review() {
     }
   };
 
+  const onAddReview = async (formData) => {
+    const subject_line = formData.get("subject_line");
+    const review_textbox = formData.get("review-textbox");
+
+    console.log(subject_line, review_textbox);
+  };
+
   return (
     <>
       <div className="reviews-card">
@@ -132,6 +139,13 @@ export default function Review() {
             <h3>Reviews</h3>
           </div>
 
+      <div className="makeareview">
+        <div className="rate-btn">
+          <h4>Rate this hotel.</h4>
+          {[1, 2, 3, 4, 5].map((value) => (
+            <span key={value} data-value={value} onClick={() => handleRating(value)}>
+              🌎
+            </span>
           {reviews.length === 0 && <p>No reviews yet.</p>}
           {reviews.map((r, index) => (
             <div key={index}>

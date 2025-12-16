@@ -11,7 +11,7 @@ export default function ReviewCard({ userInfo, token }) {
     async function getUserReviews() {
       if (!token || !userInfo?.id) return;
       try {
-        const data = await getReviews(userInfo?.id, page, 3, token);
+        const data = await getReviews(userInfo?.id, page, token);
         setReviews(data);
       } catch (error) {
         console.error("Error loading users reviews: ", error);
