@@ -25,28 +25,35 @@ export default function Register() {
 
   return (
     <>
-      <h1>Register for an account</h1>
-      <form action={onRegister}>
-        <label>
-          First Name
-          <input type="text" name="firstname" />
+      <h1 className="register-title">Register for an account</h1>
+      <form className="register-card" action={onRegister}>
+        <label className="reg-label">
+          First Name:
+          <input className="reg-name" type="text" name="firstname" />
         </label>
-        <label>
-          Last Name
-          <input type="text" name="lastname" />
+        <label className="reg-label">
+          Last Name:
+          <input className="reg-name" type="text" name="lastname" />
         </label>
-        <label>
-          Username
-          <input type="text" name="username" />
+        <label className="reg-label">
+          Username:
+          <input className="reg-user" type="text" name="username" />
         </label>
-        <label>
-          Password
-          <input type="password" name="password" required />
+        <label className="reg-label">
+          Password:
+          <input
+            className="reg-password"
+            type="password"
+            name="password"
+            required
+          />
         </label>
-        <button>Register</button>
+        <button className="reg-btn">Register</button>
         {error && <output>{error}</output>}
       </form>
-      <Link to="/login">Already have an account? Log in here.</Link>
+      <Link className="login-link" to="/login">
+        Already have an account? Log in here.
+      </Link>
     </>
   );
 }
