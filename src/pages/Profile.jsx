@@ -4,13 +4,13 @@ import { Link, useNavigate } from "react-router";
 import Modal from "../components/Profile/Modal";
 import ReviewCard from "../components/Profile/ReviewCard";
 
-import { getUserInfo } from "../api/user";
+import { getUserInfo, addUserProfilePic } from "../api/user";
 
 export default function Profile() {
   const { token } = useAuth();
   const [userInfo, setUserInfo] = useState(null);
   const navigate = useNavigate();
-  const userPicUrl = useRef("/DefaultProfilePicIcon.png");
+  const [userPicUrl, setUserPicUrl] = useState("/DefaultProfilePicIcon.png");
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -21,6 +21,7 @@ export default function Profile() {
         /***********************************/
         console.log("Profile Page: ", data);
         setUserInfo(data);
+        setUserPicUrl(data.profilepic || "/DefaultProfilePicIcon.png");
       } catch (error) {
         console.error("Error loading account details: ", error);
       }
@@ -31,15 +32,19 @@ export default function Profile() {
   // console.log(userInfo);
   if (!userInfo) return <p>Loading…</p>;
 
-  const updateUserPic = (imgSrc) => {
-    userPicUrl.current = imgSrc;
+  const updateUserPic = async (imgSrc) => {
+    setUserPicUrl(imgSrc);
+
+    await addUserProfilePic(token, {
+      profilePic: imgSrc,
+    });
   };
 
   return (
     <>
       <div className="profile-page">
         <div className="profilePic">
-          <img src={userPicUrl.current} alt="avatar" className="userPic" />
+          <img src={userPicUrl} alt="avatar" className="userPic" />
           <button className="editBtn" onClick={() => setModalOpen(true)}>
             Edit
           </button>
