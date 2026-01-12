@@ -106,15 +106,18 @@ export default function Review() {
             onSubmit={(e) => {
               e.preventDefault();
               onAddReview(new FormData(e.target));
-              // tryAddReview();
             }}
           >
             <div className="makeareview">
               <div className="rate-btn">
                 <h4 className="rt-hotel">Rate this hotel</h4>
                 {[1, 2, 3, 4, 5].map((value) => (
-                  <span className="globe" key={value} onClick={() => handleRating(value)}>
-                    {value <= rating ? ":earth_africa:" : ":earth_americas:"}
+                  <span
+                    key={value}
+                    className={`globe ${value <= rating ? "active" : ""}`}
+                    onClick={() => handleRating(value)}
+                  >
+                    🌍
                   </span>
                 ))}
               </div>
