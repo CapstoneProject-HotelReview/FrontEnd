@@ -20,7 +20,7 @@ export default function Review() {
   useEffect(() => {
     async function fetchHotel() {
       try {
-        const h = await getHotelById(hotelId, token); 
+        const h = await getHotelById(hotelId, token);
         const allReviews = await getReviewsByHotelId(hotelId, page);
         setReviews(allReviews);
         if (!hotelId) return;
@@ -44,33 +44,6 @@ export default function Review() {
     }
     setRating(value);
   };
-
-  // const tryAddReview = async () => {
-  //   if (!isLoggedIn) {
-  //     alert("You must be logged in to review this hotel");
-  //     return;
-  //   }
-  //   setError(null);
-  //   try {
-  //     const newReview = {
-  //       subject: subject,
-  //       text: text,
-  //       rating: rating,
-  //     };
-  //     setReviews([...reviews, newReview]);
-  //     setSubject("");
-  //     setText("");
-  //     setRating(0);
-  //     alert("Your review was successfully submitted!");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-  // const onAddReview = async (formData) => {
-  //   const subject_line = formData.get("subject-line");
-  //   const review_textbox = formData.get("review-textbox");
-  //   console.log(subject_line, review_textbox);
-  // };
 
   const onAddReview = async (formData) => {
     if (!isLoggedIn) return alert("You must be logged in to review this hotel");

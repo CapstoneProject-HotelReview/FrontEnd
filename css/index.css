@@ -290,3 +290,9 @@ a {
   cursor: pointer;
   font-size: 13px;
 }
+
+.loginErrMsg {
+  color: red;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}

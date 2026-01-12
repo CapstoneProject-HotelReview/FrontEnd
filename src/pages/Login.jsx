@@ -44,7 +44,7 @@ export default function Login() {
           />
         </label>
         <button className="login-btn">Login</button>
-        {error && <output>{error}</output>}
+        {error && <output className="loginErrMsg">{error}</output>}
       </form>
       <Link className="register-link" to="/register">
         Need an account? Register here.
