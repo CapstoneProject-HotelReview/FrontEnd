@@ -349,9 +349,9 @@ a {
   bottom: 9px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #0ba3fc;
-  color: #fff;
-  border: none;
+  background-color: transparent; /* transparent normally */
+  color: #ffffff; /* blue text */
+  border: 1px solid #ffffff; /* outline for visibility */
   padding: 0.4rem 0.6rem;
   font-size: 0.8rem;
   border-radius: 0.25rem;
@@ -361,7 +361,7 @@ a {
 }
 
 .profilePic .editBtn:hover {
-  background-color: #0d6eff;
+  background-color: #469de5;
 }
 
 .profileInfo {
