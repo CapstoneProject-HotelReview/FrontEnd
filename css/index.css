@@ -312,3 +312,140 @@ a {
   transform: scale(1.1);
   filter: grayscale(0%) drop-shadow(0 0 8px rgba(0, 150, 255, 1));
 }
+
+
+
+
+
+
+
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.profilePic {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.profilePic img.userPic {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #4f46e5;
+}
+
+.profilePic .editBtn {
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0ba3fc;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.profilePic .editBtn:hover {
+  background-color: #0d6eff;
+}
+
+.profileInfo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profileInfo h2 {
+  font-size: 1.8rem;
+  color: #111827;
+  margin: 0;
+}
+
+/* Review Card Container */
+.reviewCardContainer {
+  margin-top: 2rem;
+}
+
+.reviewCardContainer h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #111;
+}
+
+/* Reviews Wrapper */
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual Review Cards */
+.review {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  color: #111;
+  background-color: white; /* default */
+}
+
+/* Alternate colors */
+.review:nth-child(even) {
+  background-color: rgba(10, 152, 235, 0.699); /* light blue */
+}
+
+/* Review Titles */
+.review h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+/* Review Text */
+.review p {
+  margin: 0.25rem 0;
+}
+
+/* Review Date */
+.review .reviewDate {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Pagination Buttons */
+.reviewPageBtns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.reviewPageBtns button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #469de5;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.reviewPageBtns button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+
