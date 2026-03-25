@@ -4,6 +4,8 @@ import { getReviewsByUserId } from "../../api/review";
 export default function ReviewCard({ userInfo, token }) {
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(false);
+
   // TODO: Set up loading and error useState
   /***********************************************/
   // console.log("Review card UserInfo: ", userInfo);
@@ -12,7 +14,8 @@ export default function ReviewCard({ userInfo, token }) {
       if (!token || !userInfo?.id) return;
       try {
         const data = await getReviewsByUserId(userInfo?.id, page, token);
-        setReviews(data);
+        setReviews(data.reviews);
+        setHasNextPage(data.hasNextPage);
       } catch (error) {
         console.error("Error loading users reviews: ", error);
       }
@@ -47,7 +50,9 @@ export default function ReviewCard({ userInfo, token }) {
         <button onClick={handlePreviousPageBtn} disabled={page === 1}>
           ←
         </button>
-        <button onClick={handleNextPageBtn}>→</button>
+        <button onClick={handleNextPageBtn} disabled={!hasNextPage}>
+          →
+        </button>
       </div>
     </div>
   );
